@@ -1,111 +1,79 @@
 ---
 ---
 
-body {
-	height: 100%;
-	width: 100%;
-	background: url("/assets/images/bg.jpg");
-	background-attachment: fixed;
-	background-size: cover;
-	margin: 0;
-	padding: 0;
-	position: relative;
-	color: #ffffff;
-	font-family: sans-serif;
-	font-size: 12pt;
-}
+// variables
+@import 'variable/color';
+@import 'variable/font';
 
-#content {
-	max-width: 1000px;
-  width: 90%;
-	margin: 3.5rem auto;
-	background-color: #c94e34;
-	padding: 1.5rem;
-}
+// base and init
+@import 'base/fontface';
+@import 'base/box-sizing';
+@import 'base/body';
+@import 'base/typo';
 
-.logo-desc {
-	display: block;
-	text-align: center;
-}
+// UI element
+@import 'element/wrap';
+@import 'element/loader';
+@import 'element/dropzone';
+@import 'element/render';
+@import 'element/preview';
 
-.navicons {
-  padding: 0;
-  margin: 0;
-  text-align: center;
+// UI component
+@import 'component/nav';
+@import 'component/chooseTemplate';
+@import 'component/home';
 
-  > li {
-    display: inline-block;
+// TODO: cut it in partials
+
+.tuto {
+  max-width: 30em;
+  margin: 0 auto;
+
+  img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border: 1px solid #000000;
   }
 }
 
-.page-icon {
-	text-align: center;
-	max-width: 10rem;
-	display: block;
-	margin: 2rem 1rem;
-	color: #ffffff;
-	text-decoration: none;
+.tool {
+  counter-reset: tool-step;
 
-  &:visited,
-  &:hover {
-    color: #ffffff;
-    text-decoration: none;
+  &-header {
+    display: block;
+    text-align: center;
   }
 
-  >.icon {
-    background-color:#ffffff;
-    border-radius: 5px;
-    width: 160px;
-    line-height: 160px;
-    box-shadow: 0px 6px 0px #bbbbbb;
-    margin-bottom:10px;
+  &-step {
+    counter-increment: tool-step;
 
-    > img {
-      display: inline-block;
-      max-height: 100px;
-      max-width: 100px;
-      vertical-align: middle;
+    &-title {
+      &:before {
+        content: counter(tool-step);
+        color: $color-corail;
+        display: inline-block;
+        font-weight: bold;
+        margin-right: .5em;
+      }
     }
   }
-}
+  &-submit {
+    display: inline-block;
+    background: $color-corail;
+    color: $color-white;
+    padding: .5em 1em;
+    margin: 1em;
+    cursor: pointer;
+    text-decoration: none;
 
-.screenshot {
-  max-width: 40rem;
-	width: 100%;
-  height: auto;
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
-	border: 1px solid #000000;
-}
-
-h2 {
-	font-weight: 500;
-	margin: 0;
-	margin-top: 30px;
-	margin-bottom: 20px;
-	font-size: 200%;
-	text-align: left;
-	border-bottom: 1px solid #ffffff;
-}
-
-p {
-	font-size: 18px;
-	text-align: justify;
-	margin: 16px 0 16px;
-	padding-right: 30px;
-	padding-left: 30px;
-}
-
-#index-logo-frame {
-	margin-left: auto;
-	margin-right: auto;
-	max-width: 400px;
-	height: 400px;
-	overflow: hidden;
-}
-
-#index-logo {
-	max-width: 400px;
-	display: block;
+    &[aria-disabled=true] {
+      background-color: $color-grey;
+      cursor: not-allowed;
+      text-decoration: none;
+    }
+  }
 }
